@@ -26,7 +26,7 @@ services:
     env_file:
       - .env
     volumes:
-      - mariadb:/var/lib/mysql
+      - /var/lib/mysql
     restart: unless-stopped
     networks:
       - inception
@@ -38,7 +38,7 @@ services:
     env_file:
       - .env
     volumes:
-      - wordpress:/var/www/wordpress
+      - /var/www/wordpress
     depends_on:
       - mariadb
     build:
@@ -50,18 +50,18 @@ services:
       - inception
 
 volumes:
-  wordpress:
-    driver: local
-    driver_opts:
-        type: volumes
-        o: bind
-        device: /home/sleon/data/wordpress
   mariadb:
     driver: local
     driver_opts:
         type: volumes
         o: bind
-        device: /home/sleon/data/mariadb
+        device: './home/sleon/data/mysql'
+  wordpress:
+    driver: local
+    driver_opts:
+        type: volumes
+        o: bind
+        device: './home/sleon/data/wordpress'
 
 networks:
   inception:
