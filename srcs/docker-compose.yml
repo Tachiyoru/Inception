@@ -1,81 +1,68 @@
 version: '3.8'
 
 services:
-	nginx:
-		container_nme:
-			-	nginx
-		volumes:
-			- wordpress: /var/www/wordpress
-		build:
-			context:
-				- ./requirements/nginx
-		ports:
-			- "443:443"
-		depends_on:
-			- wordpress
-		restart:
-			- always
-		env_file:
-			- .env
-		ports:
-			- "443:443"
-		restart:
-			- on-failure
-		networks:
-			- inception
 
-services:
-	mariadb:
-		container_name:
-			- mariadb
-		build:
-			context:
-				- ./requirements/mariadb
-		env:
-			- .env
-		volumes:
-			- mariadb: /var/lib/mysql
-		restart:
-			- unless-stopped
-		networks:
-			- inception
-		expose:
-			- "3306"
+  nginx:
+    container_name: nginx
+    build: ./requirements/nginx
+    volumes:
+      - wordpress:/var/www/wordpress
+    ports:
+      - "443:443"
+    depends_on:
+      - wordpress
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "443:443"
+    networks:
+      - inception
 
-services:
-	wordpress:
-		container_name:
-			- wordpress
-		env_file:
-			- .env
-		volumes:
-			- wordpress:/var/www/wordpress
-		depends_on:
-			- mariadb
-		build:
-			context:
-				- ./requirements/wordpress
-		restart:
-			- on-failure
-		expose:
-			- "9000"
-		networks:
-			- inception
+  mariadb:
+    container_name: mariadb
+    build:
+      context: ./requirements/mariadb
+    env_file:
+      - .env
+    volumes:
+      - mariadb:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - inception
+    expose:
+      - "3306"
+
+  wordpress:
+    container_name: wordpress
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/wordpress
+    depends_on:
+      - mariadb
+    build:
+      context: ./requirements/wordpress
+    restart: on-failure
+    expose:
+      - "9000"
+    networks:
+      - inception
 
 volumes:
-	wordpress:
-		driver: local
-		driver_opts:
-			type: 'none'
-			o: 'bind'
-			device: '/home/${USER}/data/wordpress'
-	wordpress:
-		driver: local
-		driver_opts:
-			type: 'none'
-			o: 'bind'
-			device: '/home/${USER}/data/mariadb'
+  wordpress:
+    driver: local
+    driver_opts:
+        type: volumes
+        o: bind
+        device: /home/sleon/data/wordpress
+  mariadb:
+    driver: local
+    driver_opts:
+        type: volumes
+        o: bind
+        device: /home/sleon/data/mariadb
 
 networks:
-	inception:
-		driver: bridge
+  inception:
+      driver: bridge

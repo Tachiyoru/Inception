@@ -1,17 +1,14 @@
-all:
-	@docker compose -f ./scrs/docker-compose.yml up -d --build
+all: up
 
-down:
-	@docker compose -f ./scrs/docker-compose.yml down
+up:
+	docker-compose -f srcs/docker-compose.yml up --build
 
-re:
-	@docker compose -f scrs/docker-compose.yml up -d --build
+clean: stop
+	docker system prune -a -f --volumes
 
-clean:
-	@docker stop $$(docker ps -qa);\
-	docker rm $$(docker ps -qa);\
-	docker rmi -f $$(docker images -qa);\
-	docker volume rm $$(docker volume ls -q);\
-	docker network rm $$(docker network ls -q);\
+stop:
+	docker-compose -f srcs/docker-compose.yml down
 
-.PHONY: all re down clean
+re: clean all
+
+.PHONY: up clean stop re
