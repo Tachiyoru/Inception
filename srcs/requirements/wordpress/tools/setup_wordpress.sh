@@ -21,7 +21,7 @@ mkdir /run/php
 exec /usr/sbin/php-fpm7.3 -F -R
 
 
-# mkdir -p /var/www/html
-# chmod 777 /var/www/html
-# chown -R www-data:www-data /var/www/html/
-# cd /var/www/html
+mkdir -p /var/www/html
+chmod 777 /var/www/html
+chown -R www-data:www-data /var/www/html/
+cd /var/www/html
