@@ -17,4 +17,9 @@ stop:
 
 re: clean all
 
+show:
+	docker ps
+	docker volume ls -q
+	docker container ls -q
+
 .PHONY: up clean stop re
