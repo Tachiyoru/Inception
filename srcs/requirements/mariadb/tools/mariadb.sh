@@ -1,15 +1,22 @@
 #!/bin/bash
-service mysql start;
 
-#SET USER
-mysql -e "CREATE DATABASE \`${MYSQL_DATABASE}\`;"
-mysql -e "FLUSH PRIVILEGES;"
-mysql -e "CREATE USER IF DONT EXIST \`${MYSQL_USER}\`@'localhost' IDENTIFIED BY '${MYSQL_PASSWORD}';"
-mysql -e "GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO \`${MYSQL_USER}\`@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';"
+touch tmpf
+chmod 755 tmpf
 
-#SET ROOT
-mysql -e "ALTER USER '$MYSQL_ROOT_USER'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
-mysql -e "FLUSH PRIVILEGES;"
-mysqladmin -u root -p ${MYSQL_ROOT_PASSWORD} shutdown
+cat << EOF > tmpf
+CREATE DATABASE inception;
+FLUSH PRIVILEGES;
+GRANT ALL ON *.* TO '$MYSQL_ROOT_USER'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD' WITH GRANT OPTION;
+SET PASSWORD FOR '$MYSQL_ROOT_USER'@'localhost'=PASSWORD('$MYSQL_ROOT_PASSWORD');
+FLUSH PRIVILEGES ;
+GRANT ALL ON inception.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';
+EOF
+
+cat tmpf
+mysqld --user=mysql --verbose --bootstrap < tmpf
+rm tmpf
+
+#mkdir /run/mysqld
+#chmod 777 /run/mysqld
 
 exec mysqld
