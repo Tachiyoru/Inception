@@ -1,1 +1,9 @@
-mariadb      | 2023-07-05 17:35:44 25 [Warning] Access denied for user '-p'@'wordpress.srcs_inception' (using password: NO)
+wordpress    | md5 hash verified: 5c283610fdbf63095537ed791af9d19e
+wordpress    | Success: WordPress downloaded.
+wordpress    | PHP Warning:  file_get_contents(phar://wp-cli.phar/vendor/wp-cli/wp-cli/templates/phar://usr/local/bin/wp/vendor/wp-cli/config-command/templates/wp-config.mustache): failed to open stream: phar error: "vendor/wp-cli/wp-cli/templates/phar:/usr/local/bin/wp/vendor/wp-cli/config-command/templates/wp-config.mustache" is not a file in phar "wp-cli.phar" in phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/utils.php on line 605
+wordpress    | Error: Could not create new 'wp-config.php' file.
+wordpress    | Error: 'wp-config.php' not found.
+wordpress    | Either create one manually or use `wp config create`.
+wordpress    | Error: 'wp-config.php' not found.
+wordpress    | Either create one manually or use `wp config create`.
+wordpress    | mkdir: cannot create directory '/run/php': File exists

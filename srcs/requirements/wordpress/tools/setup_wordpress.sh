@@ -1,12 +1,8 @@
 #!/bin/bash
 
-while ! mariadb -h mariadb -u${MDB_USER} -p${MDB_PASS} ${MDB_DATABASE} &>/dev/null; do
-	sleep 10
-done
-
-if [-f "/var/www/html/wp-config.php"]; then
-
-	echo "wp-config.php found"
+if [ -f ./wp-config.php ]
+then
+    echo "Wordpress already installed, skipping download and configuration."
 else
 	wp core download --allow-root --locale=fr_FR
 	wp config create --allow-root --dbname=$MYSQL_DATABASE --dbuser=$MYSQL_USER --dbpass=$MYSQL_PASSWORD --dbhost=MARIADB:3306 --path=$WP_WEBSITE_PATH
