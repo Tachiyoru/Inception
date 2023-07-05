@@ -1,5 +1,1 @@
-docker logs mariadb 
-Starting MariaDB database server: mysqld ..
-ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
-ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
-Stopping MariaDB database server: mysqld.
+mariadb      | 2023-07-05 17:35:44 25 [Warning] Access denied for user '-p'@'wordpress.srcs_inception' (using password: NO)
