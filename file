@@ -1,9 +1,5 @@
-Attaching to mariadb, wordpress, nginx
-mariadb      | Starting MariaDB database server: mysqld ..
-mariadb      | ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
-mariadb      | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
-mariadb      | Stopping MariaDB database server: mysqld.
-mariadb      | Starting MariaDB database server: mysqld . ..
-mariadb      | Starting MariaDB database server: mysqld.
-mariadb      | ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
-mariadb      | Stopping MariaDB database server: mysqldERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+docker logs mariadb 
+Starting MariaDB database server: mysqld ..
+ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+Stopping MariaDB database server: mysqld.
