@@ -24,4 +24,8 @@ RUN		mv wp-cli.phar /usr/local/bin/wp
 
 EXPOSE	9000
 
-CMD		["/usr/local/bin/setup_wordpress.sh"]
+WORKDIR /var/www/html
+
+ENTRYPOINT  ["tail", "-f", "/dev/null"]
+
+#CMD		["sh", "/usr/local/bin/setup_wordpress.sh"]
