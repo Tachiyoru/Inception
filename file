@@ -1,29 +1,12 @@
-mariadb      | Starting MariaDB database server: mysqld.
-mariadb      | ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
-mariadb      | AAAAAAAAAAAAAAAAAAAAAAAAAA
-mariadb      | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
-mariadb      | 2023-07-06 10:58:25 0 [Note] Starting MariaDB 10.3.39-MariaDB-0+deb10u1 source revision ca001cf2048f0152689e1895e2dc15486dd0b1af as process 195
-mariadb      | 2023-07-06 10:58:25 0 [ERROR] mysqld: Can't lock aria control file '/var/lib/mysql/aria_log_control' for exclusive use, error: 11. Will retry for 30 seconds
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: Using Linux native AIO
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: Uses event mutexes
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: Number of pools: 1
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: Using SSE2 crc32 instructions
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: Initializing buffer pool, total size = 128M, instances = 1, chunk size = 128M
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: Completed initialization of buffer pool
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: Creating shared tablespace for temporary tables
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: Waiting for purge to start
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: 10.3.39 started; log sequence number 1628233; transaction id 20
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
-mariadb      | 2023-07-06 10:58:27 0 [Note] InnoDB: Buffer pool(s) load completed at 230706 10:58:27
-mariadb      | 2023-07-06 10:58:27 0 [Note] Plugin 'FEEDBACK' is disabled.
-mariadb      | 2023-07-06 10:58:27 0 [Note] Server socket created on IP: '::'.
-mariadb      | 2023-07-06 10:58:27 0 [Note] Reading of all Master_info entries succeeded
-mariadb      | 2023-07-06 10:58:27 0 [Note] Added new Master_info '' to hash table
-mariadb      | 2023-07-06 10:58:27 0 [Note] mysqld: ready for connections.
-mariadb      | Version: '10.3.39-MariaDB-0+deb10u1'  socket: '/run/mysqld/mysqld.sock'  port: 3306  Debian 10
+wordpress    | Success: WordPress downloaded.
+wordpress    | test1
+wordpress    | chmod: cannot access 'wp-config.php': No such file or directory
+wordpress    | test1-2
+wordpress    | PHP Warning:  file_get_contents(phar://wp-cli.phar/vendor/wp-cli/wp-cli/templates/phar://usr/local/bin/wp/vendor/wp-cli/config-command/templates/wp-config.mustache): failed to open stream: phar error: "vendor/wp-cli/wp-cli/templates/phar:/usr/local/bin/wp/vendor/wp-cli/config-command/templates/wp-config.mustache" is not a file in phar "wp-cli.phar" in phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/utils.php on line 605
+wordpress    | Error: Could not create new 'wp-config.php' file.
+wordpress    | test2
+wordpress    | Error: 'wp-config.php' not found.
+wordpress    | Either create one manually or use `wp config create`.
+wordpress    | test3
+wordpress    | Error: 'wp-config.php' not found.
+wordpress    | Either create one manually or use `wp config create`.
