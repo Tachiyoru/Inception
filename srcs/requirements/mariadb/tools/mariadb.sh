@@ -1,16 +1,15 @@
 #!/bin/bash
-service mysql start
+#!/bin/bash
 
-echo "CREATE DATABASE IF NOT EXISTS Wordpress ;" > db1.sql
-echo "FLUSH PRIVILEGES;" >> db1.sql
-echo "GRANT ALL ON *.* TO '$MYSQL_ROOT_USER'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD' WITH GRANT OPTION;" >> db1.sql
-echo "FLUSH PRIVILEGES;" >> db1.sql
-echo "CREATE USER IF NOT EXIST '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" >> db1.sql
-echo "GRANT ALL ON Wordpress.* TO '$MYSQL_USER'@'%' WITH GRANT OPTION;"  >> db1.sql
-echo "FLUSH PRIVILEGES;" >> db1.sql
-mysqld < db1.sql
-
-kill $(cat /var/run/mysqld/mysqld.pid)
-echo "AAAAAAAAAAAAAAAAAAAAAAAAAA"
-
-exec mysqld
+FILE=/var/lib/mysql/.db_create
+if  [ ! -f "$FILE" ]
+then
+    echo "Je creer la BDD"
+    envsubst < /var/init.sql > /var/init_env.sql
+    service mysql start
+    mysql -D mysql < /var/init_env.sql | true
+    touch /var/lib/mysql/.db_create
+    service mysql stop | echo -n ""
+fi
+echo "BDD deja creer"
+exec mysqld_safe
