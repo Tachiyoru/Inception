@@ -22,4 +22,10 @@ show:
 	docker volume ls -q
 	docker container ls -q
 
-.PHONY: up clean stop re
+logs:
+	docker logs wordpress
+	docker logs mariadb
+	docker logs nginx
+
+
+.PHONY: up clean stop re clear show logs
