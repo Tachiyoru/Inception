@@ -13,4 +13,5 @@ RUN		chmod +x /usr/local/bin/mariadb.sh
 
 EXPOSE	3306
 
+#CMD ["sh"]
 CMD		["sh", "/usr/local/bin/mariadb.sh"]
