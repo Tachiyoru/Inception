@@ -1,7 +1,9 @@
 wordpress    | Success: WordPress downloaded.
 wordpress    | test1
+wordpress    | chmod: cannot access 'wp-config.php': No such file or directory
 wordpress    | test1-2
-wordpress    | Error: The 'wp-config.php' file already exists.
+wordpress    | PHP Warning:  file_get_contents(phar://wp-cli.phar/vendor/wp-cli/wp-cli/templates/phar://usr/local/bin/wp/vendor/wp-cli/config-command/templates/wp-config.mustache): failed to open stream: phar error: "vendor/wp-cli/wp-cli/templates/phar:/usr/local/bin/wp/vendor/wp-cli/config-command/templates/wp-config.mustache" is not a file in phar "wp-cli.phar" in phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/utils.php on line 605
+wordpress    | Error: Could not create new 'wp-config.php' file.
 wordpress    | test2
 wordpress    | Error: 'wp-config.php' not found.
 wordpress    | Either create one manually or use `wp config create`.
