@@ -1,26 +1,27 @@
 #!/bin/bash
 
-if [ -f ./wp-config.php ]
-then
-    echo "Wordpress already installed, skipping download and configuration."
-else
-	echo "DOWNLOADING WP"
-	wp core download --allow-root --locale=fr_FR
-	echo "test1"
-	chmod 777 /run/php
-	echo "test1-2"
-	wp config create --allow-root --dbname=$MYSQL_DATABASE --dbuser=$MYSQL_USER --dbpass=$MYSQL_PASSWORD --dbhost=MARIADB:3306 --path=$WP_WEBSITE_PATH
-	echo "test2"
-	wp core install --allow-root --url=$WP_DOMAIN_NAME --title=$WP_WEBSITE_NAME --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PASS --admin_email=$WP_ADMIN_MAIL
-	echo "test3"
-	wp user create --allow-root $WP_USER $WP_USER_MAIL --role=author --user_pass=$WP_USER_PASS
+echo BEGIN
+cp /etc/wp-config.php .
+wp core download --allow-root
 
+echo PASS
+
+until mysqladmin -hmysql -u$MYSQL_USER -p$MYSQL_PASSWORD ping;
+do
+	echo WAITING
+	sleep 1
+done
+echo CONNECT
+
+#                --- https://developer.wordpress.org/cli/commands/user/create/ ---
+wp core install --url="rleseur.42.fr" --title="Inception"\
+	--admin_user=$WP_ADMIN_LOGIN --admin_password=$WP_ADMIN_PASSWORD --admin_email="test@test.test" --allow-root
+
+if [[ ! $(wp user get $WP_USER_LOGIN --allow-root) ]]
+then
+	wp user create $WP_USER_LOGIN inception@example.com --user_pass=$WP_USER_PASSWORD --allow-root
 fi
 
+echo GOOD
 
-exec /usr/sbin/php-fpm7.3 -F -R
-
-
-#mkdir -p /var/www/html
-#chown -R www-data:www-data /var/www/html/
-#cd /var/www/html
+php-fpm7.3 -F -R
