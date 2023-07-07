@@ -1,14 +1,14 @@
-mariadb      | Version: '10.3.39-MariaDB-0+deb10u1'  socket: '/run/mysqld/mysqld.sock'  port: 3306  Debian 10
-wordpress    | Downloading WordPress 6.2.2 (en_US)...
-wordpress    | md5 hash verified: bfc19ba46f9eabb8de90f501e791e61b
-wordpress    | Success: WordPress downloaded.
-wordpress    | HERE1
-wordpress    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
-wordpress    | Error: 'wp-config.php' not found.
-wordpress    | Either create one manually or use `wp config create`.
-wordpress    | Error: 'wp-config.php' not found.
-wordpress    | Either create one manually or use `wp config create`.
-wordpress    | + echo /var/www/wordpress
-wordpress    | /var/www/wordpress
-wordpress exited with code 0
 
+if ! wp core is-install
+    wp core install --allow-root --force
+    echo "HERE1"
+    wp config create --dbname=wordpress --dbuser=$MYSQL_USER --dbpass=$MYSQL_PASSWORD --dbhost=mariadb --allow-root --force
+    echo "HERE2"
+    wp core install --url="sleon.42.fr" --title="Inception" \
+    --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PASSWORD --admin_email=$WP_ADMIN_MAIL --allow-root --force
+    wp user create $WP_USER $WP_USER_MAIL --user_pass=$WP_USER_PASSWORD --allow-root --force
+    wp config shuffled-salts --allow-root --force
+fi
+
+set -x
+echo $PWD
