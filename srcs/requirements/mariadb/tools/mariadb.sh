@@ -1,5 +1,4 @@
 #!/bin/bash
-service mysql start
 
 echo "CREATE DATABASE IF NOT EXISTS Wordpress ;" > db1.sql
 echo "FLUSH PRIVILEGES;" >> db1.sql
@@ -10,7 +9,6 @@ echo "GRANT ALL ON Wordpress.* TO '$MYSQL_USER'@'%' WITH GRANT OPTION;"  >> db1.
 echo "FLUSH PRIVILEGES;" >> db1.sql
 mysqld < db1.sql
 
-#kill $(cat /var/run/mysqld/mysqld.pid)
 echo "AAAAAAAAAAAAAAAAAAAAAAAAAA"
 
 set -x
