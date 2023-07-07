@@ -1,6 +1,6 @@
 FROM	debian:buster
 
-RUN		apt update
+RUN		apt update -y && apt upgrade -y
 RUN		apt install -y nginx openssl
 
 RUN		mkdir -p /etc/nginx/ssl
@@ -11,7 +11,9 @@ RUN		openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt \
 RUN		mkdir -p /var/run/nginx
 
 COPY	./conf/nginx.conf /etc/nginx/nginx.conf
-RUN		chmod 755 /var/www/html
+RUN		mkdir -p /var/www/html chmod 755 /var/www/html
 RUN		chown -R www-data:www-data /var/www/html
+
+expose	443
 
 CMD		["nginx", "-g", "daemon off;"]
