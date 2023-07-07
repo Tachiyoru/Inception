@@ -5,7 +5,7 @@ RUN		apt-get update && apt-get upgrade -y
 RUN		apt-get install -y bash
 
 RUN		apt-get install -y wget
-RUN		apt-get install -y php7.3 php-fpm php-mysql;
+RUN		apt-get install -y php7.3 php-fpm php-mysql mariadb-client;
 
 COPY	/conf/php.conf /etc/php/7.3/fpm/pool.d/www.conf
 RUN     mkdir -p /run/php

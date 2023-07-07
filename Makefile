@@ -9,7 +9,6 @@ clean: stop
 	docker system prune -a -f --volumes
 
 clear: clean
-	rm -rf /run/mkdir
 	docker volume rm srcs_wordpress srcs_mariadb
 
 stop:
