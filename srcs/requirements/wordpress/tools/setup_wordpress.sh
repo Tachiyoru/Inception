@@ -21,3 +21,5 @@ fi
 
 set -x
 echo $PWD
+
+php-fpm7.3 -F -R

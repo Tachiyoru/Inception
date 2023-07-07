@@ -1,14 +1,2 @@
-
-if ! wp core is-install
-    wp core install --allow-root --force
-    echo "HERE1"
-    wp config create --dbname=wordpress --dbuser=$MYSQL_USER --dbpass=$MYSQL_PASSWORD --dbhost=mariadb --allow-root --force
-    echo "HERE2"
-    wp core install --url="sleon.42.fr" --title="Inception" \
-    --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PASSWORD --admin_email=$WP_ADMIN_MAIL --allow-root --force
-    wp user create $WP_USER $WP_USER_MAIL --user_pass=$WP_USER_PASSWORD --allow-root --force
-    wp config shuffled-salts --allow-root --force
-fi
-
-set -x
-echo $PWD
+wordpress    | [07-Jul-2023 17:34:14] ERROR: unable to bind listening socket for address '/run/php/php7.3-fpm.sock': No such file or directory (2)
+wordpress    | [07-Jul-2023 17:34:14] ERROR: FPM initialization failed
