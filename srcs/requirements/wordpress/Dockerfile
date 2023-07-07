@@ -12,10 +12,11 @@ COPY	/conf/php.conf /etc/php/7.3/cli/conf.d
 
 RUN		wget https://fr.wordpress.org/wordpress-6.2-fr_FR.tar.gz -P /var/www
 RUN		cd /var/www && tar -xzf wordpress-6.2-fr_FR.tar.gz && rm wordpress-6.2-fr_FR.tar.gz
-RUN		chmod 777 /var/www/wordpress
+RUN		chmod 755 /var/www/wordpress
 
-COPY	/tools/setup_wordpress.sh /usr/local/bin/
-RUN		chmod +x /usr/local/bin/setup_wordpress.sh
+COPY	/tools/setup_wordpress.sh /etc/setup_wordpress.sh
+
+RUN		chmod +x /etc/setup_wordpress.sh
 
 RUN		apt-get update && apt-get upgrade -y
 RUN		wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
@@ -28,4 +29,4 @@ WORKDIR /var/www/wordpress
 
 #ENTRYPOINT  ["tail", "-f", "/dev/null"]
 
-CMD		["sh", "/usr/local/bin/setup_wordpress.sh"]
+CMD		["bash", "/etc/setup_wordpress.sh"]

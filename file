@@ -1,12 +1,14 @@
+mariadb      | Version: '10.3.39-MariaDB-0+deb10u1'  socket: '/run/mysqld/mysqld.sock'  port: 3306  Debian 10
+wordpress    | Downloading WordPress 6.2.2 (en_US)...
+wordpress    | md5 hash verified: bfc19ba46f9eabb8de90f501e791e61b
 wordpress    | Success: WordPress downloaded.
-wordpress    | test1
-wordpress    | chmod: cannot access 'wp-config.php': No such file or directory
-wordpress    | test1-2
-wordpress    | PHP Warning:  file_get_contents(phar://wp-cli.phar/vendor/wp-cli/wp-cli/templates/phar://usr/local/bin/wp/vendor/wp-cli/config-command/templates/wp-config.mustache): failed to open stream: phar error: "vendor/wp-cli/wp-cli/templates/phar:/usr/local/bin/wp/vendor/wp-cli/config-command/templates/wp-config.mustache" is not a file in phar "wp-cli.phar" in phar:///usr/local/bin/wp/vendor/wp-cli/wp-cli/php/utils.php on line 605
-wordpress    | Error: Could not create new 'wp-config.php' file.
-wordpress    | test2
+wordpress    | HERE1
+wordpress    | ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
 wordpress    | Error: 'wp-config.php' not found.
 wordpress    | Either create one manually or use `wp config create`.
-wordpress    | test3
 wordpress    | Error: 'wp-config.php' not found.
 wordpress    | Either create one manually or use `wp config create`.
+wordpress    | + echo /var/www/wordpress
+wordpress    | /var/www/wordpress
+wordpress exited with code 0
+

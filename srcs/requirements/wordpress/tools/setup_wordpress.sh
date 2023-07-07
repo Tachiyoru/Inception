@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo "HERE1"
 
 if [ -f ./wp-config.php ]
 then
@@ -8,7 +7,8 @@ then
 else
     wp core download --allow-root --force
 
-    #wp config create --dbname=wordpress --dbuser=$MYSQL_USER --dbpass=$MYSQL_PASSWORD --dbhost=$MYSQL_HOSTNAME --allow-root
+    echo "HERE1"
+    wp config create --dbname=wordpress --dbuser=$MYSQL_USER --dbpass=$MYSQL_PASSWORD --allow-root
     wp core install --url="sleon.42.fr" --title="Inception" \
     --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PASSWORD --admin_email=$WP_ADMIN_MAIL --allow-root
 

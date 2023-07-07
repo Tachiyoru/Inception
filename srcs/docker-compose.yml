@@ -8,14 +8,12 @@ services:
     volumes:
       - wordpress:/var/www/wordpress
     ports:
-      - "443:443"
+      - "444:444"
     depends_on:
       - wordpress
     restart: always
     env_file:
       - .env
-    ports:
-      - "443:443"
     networks:
       - inception
 
