@@ -14,5 +14,6 @@ RUN		chmod +x /etc/mariadb.sh
 EXPOSE	3306
 
 #WORKDIR /var/lib/mysql
-#CMD ["sh"]
+#CMD ["bash"]
+
 CMD		["sh", "/etc/mariadb.sh"]
