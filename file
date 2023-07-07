@@ -1,2 +1,0 @@
-wordpress    | [07-Jul-2023 17:34:14] ERROR: unable to bind listening socket for address '/run/php/php7.3-fpm.sock': No such file or directory (2)
-wordpress    | [07-Jul-2023 17:34:14] ERROR: FPM initialization failed

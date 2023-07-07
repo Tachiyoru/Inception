@@ -14,7 +14,8 @@ echo "FLUSH PRIVILEGES;" >> file
 echo "AAAAAAAAAAAAAAAAAAAAAAAAAA"
 cat file
 
-mysqld --user=mysql --bootstrap --verbose < file
+mysql < file
+rm file 
 
 set -x
 echo $PWD
