@@ -2,16 +2,13 @@
 
 sleep 10
 
-set -x
-
+#set -x
 
 if ! wp core is-installed --allow-root  ; then
     wp core download --allow-root --force
-    echo "HERE1"
     wp config create --dbname=wordpress --dbuser=$MYSQL_USER \
     --dbpass=$MYSQL_PASSWORD --dbhost=mariadb \
     --allow-root --force
-    echo "HERE2"
     wp core install --url="sleon.42.fr" --title="Inception" \
     --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PASS \
     --admin_email=$WP_ADMIN_MAIL --allow-root 
@@ -21,12 +18,10 @@ if ! wp core is-installed --allow-root  ; then
 fi
 
 if wp core is-installed --allow-root  ; then
-    echo "Wordpress is installed"
+    echo "Wordpress is installed and running"
+    php-fpm7.3 -F -R
 else
     echo "Wordpress's installation failed"
 fi
 
-set -x
-echo $PWD
-
-php-fpm7.3 -F -R
+#echo $PWD

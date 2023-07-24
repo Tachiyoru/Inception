@@ -10,14 +10,12 @@ echo "FLUSH PRIVILEGES;" >> file
 echo "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" >> file
 echo "GRANT ALL ON wordpress.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';"  >> file
 echo "FLUSH PRIVILEGES;" >> file
-
-echo "AAAAAAAAAAAAAAAAAAAAAAAAAA"
-cat file
+#cat file
 
 mysqld --user=mysql --verbose --bootstrap < file
 rm file
 
-set -x
-echo $PWD
+#set -x
+#echo $PWD
 
 exec mysqld
