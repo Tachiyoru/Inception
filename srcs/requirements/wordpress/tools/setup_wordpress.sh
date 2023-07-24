@@ -1,10 +1,6 @@
 #!/bin/bash
-until mysqladmin -hmysql -u$MYSQL_USER -p$MYSQL_PASSWORD ping;
-do
-	echo WAITING
-	sleep 1
-done
-#sleep 10
+
+sleep 10
 
 #set -x
 
